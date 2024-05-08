@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Consolidated CSS classes */
+        .table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table th,
+        .table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 8px;
+            border: 2px solid #1e40af;
+            border-radius: 4px;
+            color: #1e40af;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #1e40af;
+            color: #fff;
+        }
+
+        /* Additional styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .heading {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Zebra-striping for table rows */
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+<div class="container">
+    <h1 class="heading">Student Data</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Gender</th>
+            <th>Nationality</th>
+            <th>Place of Birth</th>
+            <th>Stage ID</th>
+            <th>Grade ID</th>
+            <th>Section ID</th>
+            <th>Topic</th>
+            <th>Semester</th>
+            <th>Relation</th>
+            <th>Raised Hands</th>
+            <th>Visited Resources</th>
+            <th>Announcements View</th>
+            <th>Discussion</th>
+            <th>Parent Answering Survey</th>
+            <th>Parent School Satisfaction</th>
+            <th>Student Absence Days</th>
+            <th>Class</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.gender }}</td>
+            <td>{{ student.NationalITy }}</td>
+            <td>{{ student.PlaceofBirth }}</td>
+            <td>{{ student.StageID }}</td>
+            <td>{{ student.GradeID }}</td>
+            <td>{{ student.SectionID }}</td>
+            <td>{{ student.Topic }}</td>
+            <td>{{ student.Semester }}</td>
+            <td>{{ student.Relation }}</td>
+            <td>{{ student.raisedhands }}</td>
+            <td>{{ student.VisITedResources }}</td>
+            <td>{{ student.AnnouncementsView }}</td>
+            <td>{{ student.Discussion }}</td>
+            <td>{{ student.ParentAnsweringSurvey }}</td>
+            <td>{{ student.ParentschoolSatisfaction }}</td>
+            <td>{{ student.StudentAbsenceDays }}</td>
+            <td>{{ student.Class }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="mt-4 text-center">
+        <a href="{% url 'graph_class_count' %}" class="button">Class Count</a>
+        <a href="{% url 'graph_semester' %}" class="button">Semester</a>
+        <a href="{% url 'graph_gender' %}" class="button">Gender</a>
+        <a href="{% url 'graph_nationality' %}" class="button">Nationality</a>
+        <a href="{% url 'graph_grade' %}" class="button">Grade</a>
+        <a href="{% url 'graph_section' %}" class="button">Section</a>
+        <a href="{% url 'graph_topic' %}" class="button">Topic</a>
+        <a href="{% url 'graph_stage' %}" class="button">Stage</a>
+        <a href="{% url 'graph_absent_days' %}" class="button">Absent Days</a>
+        <a href="{% url 'train_decision_tree' %}" class="button">Train Decision Tree</a>
+        <a href="{% url 'train_random_forest' %}" class="button">Train Random Forest</a>
+        <a href="{% url 'train_perceptron' %}" class="button">Train Perceptron</a>
+        <a href="{% url 'train_logistic_regression' %}" class="button">Train Logistic Regression</a>
+        <a href="{% url 'train_mlp_classifier' %}" class="button">Train MLP Classifier</a>
+        <a href="{% url 'student_form' %}" class="button">Make Predictions</a>
+    </div>
+</div>
+</body>
+</html>

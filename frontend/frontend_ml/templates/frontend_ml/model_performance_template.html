@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Performance</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #dddddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2>{{ model_name }} Performance</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Measure</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-Score</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for class, metrics in report.items %}
+            {% if class != 'accuracy' %}
+                <tr>
+                    <td>{{ class }}</td>
+                    <td>{{ metrics.precision }}</td>
+                    <td>{{ metrics.recall }}</td>
+                    <td>{{ metrics.f1_score }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        <tr>
+            <td>Overall Accuracy</td>
+            <td colspan="3">{{ report.accuracy }}</td>
+        </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

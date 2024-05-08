@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .content {
+            margin: auto;
+            width: 50%;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        li strong {
+            color: #1e40af;
+        }
+        .try-again {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #1e40af;
+        }
+        .try-again:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Prediction Result</h1>
+        {% if predictions %}
+            <ul>
+                {% for model, prediction in predictions.items %}
+                    <li>{{ model }}: <strong>{{ prediction }}</strong></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No predictions could be made based on the input provided.</p>
+        {% endif %}
+        <a href="{% url 'student_form' %}" class="try-again">Try another prediction</a>
+    </div>
+</body>
+</html>
